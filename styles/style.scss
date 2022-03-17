@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;800;900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+// scss varibles
+$main-font: "Poppins", sans-serif;
+$thBackgroundColor: white;
+$thColorItems: #333;
+$borderBottomColor: #ede9e9;
+$boxShadow: 4px 4px 20px -6px black;
+$textColor: gray;
+
+// badge duplicated style
+@mixin badgeCorStyle {
+  color: white;
+  border-radius: 20px;
+  margin: 15px 30px;
+  padding: 12px 0px;
+}
+
+@mixin buttonStyle($color) {
+    background-color: $color;
+    font-family: $main-font;
+    padding: 1%;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    width: 25%;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+  /* scroll bar width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px gainsboro;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $textColor;
+    border-radius: 10px;
+  }
+
+.allContents {
+  padding: 2%;
+  .overlay {
+      .active {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(black, .5);
+            top: 0;
+            left: 0;
+      }
+  }
+  .tableContents {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-shadow: $boxShadow;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    height: 620px;
+    overflow: auto;
+
+    .valide {
+        background-color: #5BE881;
+        @include badgeCorStyle;
+      }
+      .rejected {
+        background-color: #FF0000;
+        @include badgeCorStyle;
+      }
+      .on-validation {
+        background-color: #FDB64D;
+        @include badgeCorStyle;
+      }
+    table {
+      text-align: center;
+      vertical-align: middle;
+      width: 90%;
+      font-family: $main-font;
+      border-collapse: collapse;
+      margin: 5% 0%;
+    }
+    caption {
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+      color: $textColor;
+      margin-bottom: 2%;
+    }
+    thead {
+      background-color: $thBackgroundColor;
+      color: $thColorItems;
+      font-size: 0.875rem;
+      letter-spacing: 1px;
+      tr {
+        th {
+          padding: 8px;
+          width: 10%;
+          border-bottom: 2px solid $borderBottomColor;
+          &:last-of-type {
+            width: 20%;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 2px solid $borderBottomColor;
+        td {
+          padding: 25px 0px;
+          font-size: 15px;
+        }
+        .trashIcon {
+          img {
+            width: 10%;
+            cursor: pointer;
+            transition: width 0.4s ease-in-out;
+            &:hover {
+              width: 15%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .addUserContents {
+    box-shadow: $boxShadow;
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    .contents {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        height: 100%;
+        margin-right: 5%;
+        .addUserBtn {
+            @include buttonStyle(#FDB64D);
+        }
+    }
+  }
+}
+
+.modalClass {
+    .modalBody {
+        background-color: white;
+        overflow: auto;
+        right: auto;
+        border-radius: 20px;
+        top: 20%;
+        left: 10%;
+        position: fixed;
+        box-shadow: $boxShadow;
+        width: 80%;
+        height: 500px;
+        padding: 2% 4%;
+        .OuiNonBtn {
+            display: flex;
+            justify-content: space-around;
+            button {
+                &:first-of-type {
+                    @include buttonStyle(#5BE881);
+                }
+                &:last-of-type {
+                    @include buttonStyle(#FF0000);
+                }
+                
+            }
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            .formInput {
+                margin-bottom: 2%;
+                label {
+                    font-family: $main-font;
+                    font-weight:300;
+                    color: $textColor;
+                }
+                input, select {
+                    border: 1px solid #dbd1d1;
+                    border-radius: 5px;
+                    padding: 8px 25px;
+                    color: $textColor;
+                    width: 300px;
+                    &:focus-visible {
+                        outline: unset;
+                    }
+                }
+            }
+            .submitBtn {
+                position: absolute;
+                right: 0;
+                bottom: -10%;
+                @include buttonStyle(#FDB64D);
+            }
+            .formInputW30 {
+                width: 30%;
+                @media (max-width: 1400px) {
+                    width: 100%;
+                }
+            }
+            .formInputW60 {
+                width: 60%;
+                @media (max-width: 1400px) {
+                    width: 100%;
+                }
+            }
+            .errors {
+                ul {
+                    li {
+                        color: #FF0000;
+                        font-family: $main-font;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        h2 {
+            font-family: $main-font;
+            font-size: 35px;
+        }
+    }
+}
+
