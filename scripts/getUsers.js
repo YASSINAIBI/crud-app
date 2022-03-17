@@ -21,7 +21,7 @@ export let getAllUserFunc = () => {
                 <td>${element.lastName}</td>
                 <td>${element.userName}</td>
                 <td>${element.registrationNumber}</td>
-                <td class="trashIcon"><img src='../img/trash.svg' onclick="DeleteModaleFunc('${element.id}')"></td>
+                <td class="trashIcon"><img src='https://searchcept.com/images/trash.svg' onclick="DeleteModaleFunc('${element.id}')"></td>
             </tr>
             `;
     });
